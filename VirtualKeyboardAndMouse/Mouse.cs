@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace VirtualKeyboardAndMouse
 {
-    public class VirtualMouseLib
+    public class Mouse
     {
         #region DLLImport
         [Flags]
@@ -65,7 +65,7 @@ namespace VirtualKeyboardAndMouse
             if (!gotPoint) { currentMousePoint = new MousePoint(0, 0); }
             return currentMousePoint;
         }
-        public static void MouseMoveTo(int x, int y)
+        public static void MouseMoveTo(int x, int y, bool withMoveDelay = true, int moveDelay = 1)
         {
 
             MousePoint current = GetCursorPosition();
@@ -78,7 +78,7 @@ namespace VirtualKeyboardAndMouse
                     yy = (double)(((double)current.Y - (double)y) / ((double)current.X - (double)x)) * (double)i + ((double)current.Y - ((double)current.Y - (double)y) / ((double)current.X - (double)x) * (double)current.X);
                     SetCursorPosition(i, (int)yy);
 
-                    Thread.Sleep(1);
+                    if(withMoveDelay)  Thread.Sleep(moveDelay);
                 }
             }
             else if (current.X < x)
@@ -87,7 +87,7 @@ namespace VirtualKeyboardAndMouse
                 {
                     yy = (double)(((double)current.Y - (double)y) / ((double)current.X - (double)x)) * (double)i + ((double)current.Y - ((double)current.Y - (double)y) / ((double)current.X - (double)x) * (double)current.X);
                     SetCursorPosition(i, (int)yy);
-                    Thread.Sleep(1);
+                    if (withMoveDelay) Thread.Sleep(moveDelay);
                 }
             }
         }

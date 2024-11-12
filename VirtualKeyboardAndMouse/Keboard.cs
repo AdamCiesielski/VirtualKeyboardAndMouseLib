@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace VirtualKeyboardAndMouse
 {
-    class VirtualKeboardLib
+    public class Keboard
     {
         /*
         TO DO think about special sights
@@ -28,6 +28,7 @@ namespace VirtualKeyboardAndMouse
         private const int SLASH = 0xBF;
         private const int ALT = 0x12;
         private const int F10 = 0x79;
+        private const int TAB = 0x09;
         #endregion
 
         public static void PressKey(char key)
@@ -67,10 +68,18 @@ namespace VirtualKeyboardAndMouse
         public static void PressAlt()
         {
             keybd_event(ALT, 0, KEYEVENTF_KEYDOWN, 0);
-        }       
+        }
+        public static void PressTab()
+        {
+            keybd_event(TAB, 0, KEYEVENTF_KEYDOWN, 0);
+        }
         public static void ReleaseAlt()
         {
             keybd_event(ALT, 0, KEYEVENTF_KEYUP, 0);
+        }
+        public static void ReleaseTab()
+        {
+            keybd_event(TAB, 0, KEYEVENTF_KEYUP, 0);
         }
         public static void PressF10()
         {

@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="VirtualKeboardLib.cs" />
-    <Compile Include="VirtualMouseLib.cs" />
+    <Compile Include="Keboard.cs" />
+    <Compile Include="Mouse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
